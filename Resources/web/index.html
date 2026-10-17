@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en" data-theme="neon">
+<head>
+<meta charset="utf-8">
+<title>MacDisplay</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<canvas id="bg"></canvas>
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+    <stop offset="0" style="stop-color:var(--a1)"/><stop offset="1" style="stop-color:var(--a2)"/>
+  </linearGradient>
+</defs></svg>
+
+<main id="stage" class="lay"></main>
+
+<div class="hud"><span>M menu · T theme · D layout · F fullscreen</span><button id="gear" title="Menu (M)">⚙ Menu</button></div>
+<div class="toast" id="toast"></div>
+<div class="offline" id="offline">Server not reachable. Is start.command still running?</div>
+<div class="menu" id="menu"><div class="panel" id="panel"></div></div>
+<div class="menu" id="dlg" style="z-index:50"><div class="panel" id="dlgp" style="width:min(560px,94vw)"></div></div>
+
+<script src="/effects.js"></script>
+<script src="/app.js"></script>
+</body>
+</html>

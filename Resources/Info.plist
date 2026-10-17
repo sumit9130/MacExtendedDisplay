@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>CFBundleName</key>
+    <string>MacDisplay</string>
+    <key>CFBundleDisplayName</key>
+    <string>MacDisplay</string>
+    <key>CFBundleIdentifier</key>
+    <string>app.macdisplay.MacDisplay</string>
+    <key>CFBundleExecutable</key>
+    <string>MacDisplay</string>
+    <key>CFBundlePackageType</key>
+    <string>APPL</string>
+    <key>CFBundleInfoDictionaryVersion</key>
+    <string>6.0</string>
+    <key>CFBundleShortVersionString</key>
+    <string>2.0</string>
+    <key>CFBundleVersion</key>
+    <string>2</string>
+    <key>CFBundleIconFile</key>
+    <string>AppIcon</string>
+    <key>LSMinimumSystemVersion</key>
+    <string>13.0</string>
+    <key>LSApplicationCategoryType</key>
+    <string>public.app-category.utilities</string>
+    <key>NSHighResolutionCapable</key>
+    <true/>
+    <key>NSPrincipalClass</key>
+    <string>NSApplication</string>
+    <key>NSLocationUsageDescription</key>
+    <string>MacDisplay uses your approximate location to show the weather where you are.</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>MacDisplay uses your approximate location to show the weather where you are.</string>
+    <key>NSAppleEventsUsageDescription</key>
+    <string>MacDisplay reads the current track from Music or Spotify to show what is playing.</string>
+</dict>
+</plist>
