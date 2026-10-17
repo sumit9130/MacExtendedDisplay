@@ -1,0 +1,39 @@
+name: Build MacDisplay
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build universal app
+        run: |
+          set -e
+          APP=MacDisplay.app
+          mkdir -p "$APP/Contents/MacOS" "$APP/Contents/Resources"
+          for ARCH in arm64 x86_64; do
+            swiftc -O -swift-version 5 -target "$ARCH-apple-macos13.0" Sources/*.swift -o "MacDisplay-$ARCH"
+          done
+          lipo -create MacDisplay-arm64 MacDisplay-x86_64 -output "$APP/Contents/MacOS/MacDisplay"
+          cp Resources/Info.plist "$APP/Contents/Info.plist"
+          cp -R Resources/web "$APP/Contents/Resources/web"
+          cp Resources/AppIcon.icns "$APP/Contents/Resources/AppIcon.icns"
+          codesign --force --deep --sign - "$APP"
+
+      - name: Package
+        run: |
+          set -e
+          mkdir dmgroot && cp -R MacDisplay.app dmgroot/ && ln -s /Applications dmgroot/Applications
+          hdiutil create -volname MacDisplay -srcfolder dmgroot -ov -format UDZO MacDisplay.dmg
+          ditto -c -k --keepParent MacDisplay.app MacDisplay-app.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: MacDisplay
+          path: |
+            MacDisplay.dmg
+            MacDisplay-app.zip
